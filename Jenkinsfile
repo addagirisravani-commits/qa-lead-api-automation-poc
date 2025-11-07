@@ -1,15 +1,10 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven3'
-        jdk 'JDK11'
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/addagirisravani-commits/qa-lead-api-automation-poc.git'
+                checkout scm
             }
         }
 
@@ -19,17 +14,26 @@ pipeline {
             }
         }
 
-        stage('Run API Tests') {
+        stage('Run Tests') {
             steps {
                 sh 'mvn test'
+            }
+        }
+
+        stage('Archive Reports') {
+            steps {
+                junit '**/target/surefire-reports/*.xml'
             }
         }
     }
 
     post {
         always {
-            junit '**/target/surefire-reports/*.xml'
+            emailext (
+                subject: "API Automation Pipeline Status: ${currentBuild.currentResult}",
+                body: "Build finished with result: ${currentBuild.currentResult}",
+                to: "addagirisravani@gmail.com"
+            )
         }
     }
 }
-
