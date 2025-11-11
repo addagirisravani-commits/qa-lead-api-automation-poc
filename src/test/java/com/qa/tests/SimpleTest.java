@@ -1,13 +1,14 @@
 package com.qa.tests;
 
 import com.qa.base.BaseTest;
+import com.qa.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SimpleTest extends BaseTest {
     @Test
-    public void openExampleAndCheckTitle() {
-        driver.get("https://example.com/");
-        Assert.assertTrue(driver.getTitle().toLowerCase().contains("example"));
+    public void titleCheck() {
+        HomePage home = new HomePage(driver);
+        Assert.assertTrue(home.getTitle().toLowerCase().contains("example"));
     }
 }
