@@ -1,6 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.sravani.qa.poc</groupId>
@@ -13,17 +14,21 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- Default suite file (override using -Dsurefire.suiteXmlFiles=testng-parallel.xml) -->
+    <surefire.suiteXmlFiles>testng.xml</surefire.suiteXmlFiles>
   </properties>
 
   <dependencies>
-    <!-- Selenium for both main & test code -->
+
+    <!-- Selenium -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
       <version>4.25.0</version>
     </dependency>
 
-    <!-- TestNG only for test sources -->
+    <!-- TestNG -->
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
@@ -38,31 +43,33 @@
       <version>5.9.2</version>
     </dependency>
 
-    <!-- Extent Reports (reporting) -->
+    <!-- Extent Reports -->
     <dependency>
       <groupId>com.aventstack</groupId>
       <artifactId>extentreports</artifactId>
       <version>5.1.1</version>
     </dependency>
 
-    <!-- Commons IO for screenshots -->
+    <!-- Apache Commons IO (for saving screenshots) -->
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
       <version>2.16.1</version>
     </dependency>
 
-    <!-- Simple logging -->
+    <!-- SLF4J Simple Logging -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
       <version>2.0.12</version>
     </dependency>
+
   </dependencies>
 
   <build>
     <plugins>
-      <!-- Make sure tests compile with test classpath (includes TestNG) -->
+
+      <!-- Java Compiler Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -73,17 +80,28 @@
         </configuration>
       </plugin>
 
-      <!-- Run TestNG suite -->
+      <!-- Surefire Plugin (for TestNG suites) -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.2.5</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>testng.xml</suiteXmlFile>
+            <suiteXmlFile>${surefire.suiteXmlFiles}</suiteXmlFile>
           </suiteXmlFiles>
+          <forkCount>1</forkCount>
+          <reuseForks>true</reuseForks>
         </configuration>
       </plugin>
+
     </plugins>
   </build>
+<profiles>
+  <profile>
+    <id>parallel</id>
+    <properties>
+      <surefire.suiteXmlFiles>testng-parallel.xml</surefire.suiteXmlFiles>
+    </properties>
+  </profile>
+</profiles>
 </project>
