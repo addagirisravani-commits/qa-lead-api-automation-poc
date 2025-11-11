@@ -1,2 +1,5 @@
 com\qa\base\BaseTest.class
+com\qa\utils\ConfigReader.class
+com\qa\driver\DriverFactory.class
 com\qa\tests\SimpleTest.class
+com\qa\pages\HomePage.class
