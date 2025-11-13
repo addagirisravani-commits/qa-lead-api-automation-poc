@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-11-13T11:32:46 IST" name="ProjectSuite" finished-at="2025-11-13T11:32:59 IST" duration-ms="13070">
+    <groups>
+      <group name="smoke">
+        <method signature="LoginTest.loginShouldSucceed()[pri:0, instance:com.yourcompany.tests.LoginTest@498d318c]" name="loginShouldSucceed" class="com.yourcompany.tests.LoginTest"/>
+      </group> <!-- smoke -->
+    </groups>
+    <test started-at="2025-11-13T11:32:46 IST" name="Chrome_Smoke" finished-at="2025-11-13T11:32:59 IST" duration-ms="13070">
+      <class name="com.yourcompany.tests.LoginTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.yourcompany.tests.LoginTest@498d318c]" started-at="2025-11-13T11:32:46 IST" name="setup" finished-at="2025-11-13T11:32:56 IST" duration-ms="9830" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://example.com]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[target/screenshots]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="loginShouldSucceed()[pri:0, instance:com.yourcompany.tests.LoginTest@498d318c]" started-at="2025-11-13T11:32:56 IST" name="loginShouldSucceed" finished-at="2025-11-13T11:32:56 IST" duration-ms="29" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginShouldSucceed -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:com.yourcompany.tests.LoginTest@498d318c]" started-at="2025-11-13T11:32:56 IST" name="teardown" finished-at="2025-11-13T11:32:57 IST" duration-ms="416" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.yourcompany.tests.LoginTest -->
+      <class name="com.yourcompany.tests.LoginFailureTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.yourcompany.tests.LoginFailureTest@3e58a80e]" started-at="2025-11-13T11:32:57 IST" name="setup" finished-at="2025-11-13T11:32:59 IST" duration-ms="2167" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://example.com]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[target/screenshots]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="intentionalFailure()[pri:0, instance:com.yourcompany.tests.LoginFailureTest@3e58a80e]" started-at="2025-11-13T11:32:59 IST" name="intentionalFailure" finished-at="2025-11-13T11:32:59 IST" duration-ms="47" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Intentional mismatch to demo screenshot capture expected [This Title Will Not Match] but found [Example Domain]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Intentional mismatch to demo screenshot capture expected [This Title Will Not Match] but found [Example Domain]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+at org.testng.Assert.assertEquals(Assert.java:132)
+at org.testng.Assert.assertEquals(Assert.java:656)
+at com.yourcompany.tests.LoginFailureTest.intentionalFailure(LoginFailureTest.java:17)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:840)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intentionalFailure -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:com.yourcompany.tests.LoginFailureTest@3e58a80e]" started-at="2025-11-13T11:32:59 IST" name="teardown" finished-at="2025-11-13T11:32:59 IST" duration-ms="273" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.yourcompany.tests.LoginFailureTest -->
+    </test> <!-- Chrome_Smoke -->
+  </suite> <!-- ProjectSuite -->
+</testng-results>
