@@ -1,6 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -17,10 +19,13 @@
 
     <!-- Default suite file (override using -Dsurefire.suiteXmlFiles=testng-parallel.xml) -->
     <surefire.suiteXmlFiles>testng.xml</surefire.suiteXmlFiles>
+
+    <!-- Plugin versions -->
+    <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
+    <maven.surefire.plugin.version>3.2.5</maven.surefire.plugin.version>
   </properties>
 
   <dependencies>
-
     <!-- Selenium -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
@@ -43,7 +48,7 @@
       <version>5.9.2</version>
     </dependency>
 
-    <!-- Extent Reports -->
+    <!-- Extent Reports (optional) -->
     <dependency>
       <groupId>com.aventstack</groupId>
       <artifactId>extentreports</artifactId>
@@ -64,6 +69,7 @@
       <version>2.0.12</version>
     </dependency>
 
+    <!-- Add RestAssured or other deps here if needed -->
   </dependencies>
 
   <build>
@@ -73,10 +79,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
+        <version>${maven.compiler.plugin.version}</version>
         <configuration>
           <showDeprecation>true</showDeprecation>
           <showWarnings>true</showWarnings>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
         </configuration>
       </plugin>
 
@@ -84,24 +92,30 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.2.5</version>
+        <version>${maven.surefire.plugin.version}</version>
         <configuration>
           <suiteXmlFiles>
             <suiteXmlFile>${surefire.suiteXmlFiles}</suiteXmlFile>
           </suiteXmlFiles>
           <forkCount>1</forkCount>
           <reuseForks>true</reuseForks>
+          <!-- Optionally pass system properties -->
+          <!-- <systemPropertyVariables>
+            <env>qa</env>
+          </systemPropertyVariables> -->
         </configuration>
       </plugin>
 
     </plugins>
   </build>
-<profiles>
-  <profile>
-    <id>parallel</id>
-    <properties>
-      <surefire.suiteXmlFiles>testng-parallel.xml</surefire.suiteXmlFiles>
-    </properties>
-  </profile>
-</profiles>
+
+  <profiles>
+    <profile>
+      <id>parallel</id>
+      <properties>
+        <surefire.suiteXmlFiles>testng-parallel.xml</surefire.suiteXmlFiles>
+      </properties>
+    </profile>
+  </profiles>
+
 </project>

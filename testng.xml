@@ -1,11 +1,18 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="UI Suite" parallel="false" thread-count="2">
+<suite name="ProjectSuite" parallel="tests" thread-count="2">
+  <parameter name="baseUrl" value="https://example.com"/>
+  <parameter name="reportPath" value="target/screenshots"/>
+
+  <!-- Register listener here -->
   <listeners>
-    <listener class-name="com.qa.listeners.ExtentTestNGListener"/>
+    <listener class-name="com.yourcompany.listeners.TestListener"/>
   </listeners>
-  <test name="Smoke">
+
+  <test name="Chrome_Smoke">
+    <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.qa.tests.SimpleTest"/>
+      <class name="com.yourcompany.tests.LoginTest"/>
+      <class name="com.yourcompany.tests.LoginFailureTest"/>
     </classes>
   </test>
 </suite>

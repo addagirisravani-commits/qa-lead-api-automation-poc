@@ -1,8 +1,0 @@
-com\qa\base\BaseTest.class
-com\qa\driver\DriverFactory.class
-com\qa\tests\SimpleTest.class
-com\qa\pages\HomePage.class
-com\qa\report\ExtentManager.class
-com\qa\utils\ConfigReader.class
-com\qa\utils\ScreenshotUtil.class
-com\qa\listeners\ExtentTestNGListener.class
